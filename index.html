@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hoa Đăng</title>
+  <link rel="icon" href="device.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #fffaf5;
+      color: #333;
+      line-height: 1.6;
+    }
+    header {
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4') center/cover no-repeat;
+      color: white;
+      text-align: center;
+      padding: 120px 20px;
+      position: relative;
+    }
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 64px;
+      margin: 0;
+      letter-spacing: 1px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    header p {
+      font-size: 24px;
+      margin-top: 15px;
+      font-weight: 500;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .header-cta {
+      display: inline-block;
+      background: #c19a6b;
+      color: white;
+      padding: 12px 30px;
+      margin-top: 30px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s;
+    }
+    .header-cta:hover {
+      background: #a5825a;
+      transform: translateY(-3px);
+    }
+    /* Tối ưu navigation */
+    nav {
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      padding: 15px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      overflow-x: auto;
+      white-space: nowrap;
+      -webkit-overflow-scrolling: touch;
+    }
+    nav::-webkit-scrollbar {
+      display: none;
+    }
+    nav a {
+      color: #333;
+      margin: 0 12px;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: 20px;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      font-size: 14px;
+      letter-spacing: 1px;
+      flex-shrink: 0;
+    }
+    nav a:hover {
+      background: rgba(193, 154, 107, 0.1);
+      color: #c19a6b;
+    }
+    nav a.active {
+      background: #c19a6b;
+      color: white;
+      box-shadow: 0 4px 8px rgba(193, 154, 107, 0.3);
+    }
+    .nav-scrolled {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      background: rgba(255,255,255,0.98);
+      backdrop-filter: blur(5px);
+    }
+    section {
+      padding: 80px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    section h2 {
+      text-align: center;
+      font-size: 36px;
+      margin-bottom: 40px;
+      font-family: 'Playfair Display', serif;
+      color: #333;
+      position: relative;
+    }
+    section h2:after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 3px;
+      background: #c19a6b;
+      margin: 15px auto;
+    }
+    .about-content {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+    .about-text {
+      flex: 1;
+    }
+    .about-image {
+      flex: 1;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    .about-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.5s;
+    }
+    .about-image:hover img {
+      transform: scale(1.05);
+    }
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+    .menu-item {
+      background: transparent;
+      box-shadow: none;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .menu-item img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+    .menu-item:hover img {
+      transform: scale(1.05);
+    }
+    .menu-item-content {
+      padding: 20px;
+    }
+    .menu-item h3 {
+      margin: 0 0 10px;
+      font-family: 'Playfair Display', serif;
+      color: #c19a6b;
+    }
+    .menu-item p {
+      color: #666;
+      margin-bottom: 15px;
+    }
+    .price {
+      font-weight: bold;
+      color: #333;
+      font-size: 18px;
+    }
+    .contact-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+    .contact-card {
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    .contact-card i {
+      font-size: 36px;
+      color: #c19a6b;
+      margin-bottom: 20px;
+    }
+    .contact-card h3 {
+      margin: 0 0 15px;
+      font-family: 'Playfair Display', serif;
+    }
+    .map {
+      width: 100%;
+      height: 400px;
+      border: none;
+      border-radius: 16px;
+      margin-top: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    footer {
+      background: #333;
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+    }
+    .footer-content {
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      text-align: left;
+    }
+    .footer-column h3 {
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .footer-column h3:after {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 2px;
+      background: #c19a6b;
+      margin-top: 10px;
+    }
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    .social-links a {
+      color: white;
+      background: #444;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+    }
+    .social-links a:hover {
+      background: #c19a6b;
+      transform: translateY(-3px);
+    }
+    .copyright {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid #444;
+      font-size: 14px;
+    }
+    /* Thêm style cho modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      overflow-y: auto;
+    }
+    .modal-content {
+      background-color: #fff;
+      margin: 5% auto;
+      padding: 30px;
+      border-radius: 16px;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      animation: modalopen 0.4s;
+      position: relative;
+      top: 20px;
+    }
+    @keyframes modalopen {
+      from {opacity: 0; transform: translateY(-20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    .close {
+      color: #aaa;
+      position: absolute;
+      right: 20px;
+      top: 15px;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 1;
+    }
+    .close:hover {
+      color: #333;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: #555;
+    }
+    .form-group input, 
+    .form-group select, 
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 15px;
+      transition: border-color 0.3s;
+    }
+    .form-group input:focus, 
+    .form-group select:focus, 
+    .form-group textarea:focus {
+      border-color: #c19a6b;
+      outline: none;
+    }
+    .form-submit {
+      background: #c19a6b;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: bold;
+      width: 100%;
+      transition: all 0.3s;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+    .form-submit:hover {
+      background: #a5825a;
+    }
+    .success-message {
+      display: none;
+      color: #4CAF50;
+      text-align: center;
+      margin-top: 20px;
+      font-weight: bold;
+      padding: 15px;
+      background: #f8fff8;
+      border-radius: 8px;
+      border: 1px solid #e0f7e0;
+    }
+    /* Responsive cho mobile */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 48px;
+      }
+      header p {
+        font-size: 20px;
+      }
+      .about-content {
+        flex-direction: column;
+      }
+      nav {
+        justify-content: flex-start;
+        padding: 12px 15px;
+      }
+      nav a {
+        margin: 0 8px;
+        padding: 6px 12px;
+        font-size: 13px;
+      }
+      .modal-content {
+        margin: 10% auto;
+        width: 95%;
+        padding: 20px;
+      }
+      .form-group input, 
+      .form-group select, 
+      .form-group textarea {
+        padding: 10px 12px;
+      }
+      .form-submit {
+        padding: 10px 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Trung Tâm Hội Nghị - Tiệc Cưới Hoa Đăng</h1>
+    <p>Không gian ẩm thực tinh tế kết hợp giữa truyền thống và hiện đại</p>
+    <a href="#bookingModal" class="header-cta" id="headerBookingBtn">Đặt bàn ngay</a>
+  </header>
+
+  <nav id="mainNav">
+    <a href="#gioithieu" class="active">Giới thiệu</a>
+    <a href="#menu">Trưng Bày</a>
+    <a href="#lienhe">Liên hệ</a>
+    <a href="#bookingModal" id="navBookingBtn">Đặt bàn</a>
+  </nav>
+
+  <section id="gioithieu">
+    <h2>Giới thiệu</h2>
+    <div class="about-content">
+      <div class="about-text">
+        <p>Chào mừng bạn đến với <strong>Trung Tâm Hội Nghị - Tiệc Cưới Hoa Đăng</strong> nơi hội tụ tinh hoa ẩm thực Việt Nam với phong cách đương đại. Tọa lạc tại trung tâm thành phố, chúng tôi tự hào mang đến những trải nghiệm ẩm thực độc đáo trong không gian sang trọng nhưng ấm cúng.</p>
+        <p>Với đội ngũ đầu bếp giàu kinh nghiệm cùng nguyên liệu tươi ngon được tuyển chọn kỹ lưỡng, mỗi món ăn tại Hoa Đăng là một tác phẩm nghệ thuật, kết hợp hài hòa giữa hương vị truyền thống và cách trình bày hiện đại.</p>
+        <p>Không chỉ là nơi thưởng thức ẩm thực, Hoa Đăng còn là điểm đến lý tưởng cho các sự kiện đặc biệt như tiệc cưới, họp mặt gia đình hay gặp gỡ đối tác.</p>
+      </div>
+      <div class="about-image">
+        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5" alt="Không gian nhà hàng">
+      </div>
+    </div>
+  </section>
+
+  <section id="menu">
+    <h2>Trưng Bày</h2>
+    <div class="menu-grid">
+      <div class="menu-item">
+        <img src="z6798857383905_17462a408e6d3143178a93ea8d046fae.jpg">
+      </div>
+      <div class="menu-item">
+        <img src="z6798857434989_8228cf2994f89e80bfd20f811e4043bd.jpg" >
+      </div>
+      <div class="menu-item">
+        <img src="z6798857834242_c7d7c94ef9e41d2cf48e7fea1c67236b.jpg" >
+      </div>
+      <div class="menu-item">
+        <img src="z6798858008279_e762d0a087057633394324ff2d8ce80a.jpg" >
+      </div>
+    </div>
+  </section>
+
+  <section id="lienhe">
+    <h2>Liên hệ</h2>
+    <div class="contact-info">
+      <div class="contact-card">
+        <i class="fas fa-map-marker-alt"></i>
+        <h3>Địa chỉ</h3>
+        <p>Đường Trần Phú, Củng Sơn, Sơn Hòa, Phú Yên, Việt Nam</p>
+      </div>
+      <div class="contact-card">
+        <i class="fas fa-phone-alt"></i>
+        <h3>Số điện thoại</h3>
+        <p>0843 661 084</p>
+        <p>0788 325 096</p>
+      </div>
+      <div class="contact-card">
+        <i class="fas fa-envelope"></i>
+        <h3>Email</h3>
+        <p>dangkhoash@gmail.com</p>
+      </div>
+      <div class="contact-card">
+        <i class="fas fa-clock"></i>
+        <h3>Giờ mở cửa</h3>
+        <p>Luôn luôn mở cửa</p>
+      </div>
+    </div>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.7141414268135!2d108.9715929759086!3d13.053858887269122!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x316fcf8b9f12c74f%3A0x2fa1d78f6ff8965d!2zVHJ1bmcgdMOibSBo4buZaSBuZ2jhu4sgLSB0aeG7h2MgY8aw4bubaSBIb2EgxJDEg25n!5e0!3m2!1svi!2s!4v1752346006382!5m2!1svi!2s" width="1200" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-column">
+        <h3>Trung Tâm Hội Nghị - Tiệc Cưới Hoa Đăng </h3>
+        <p>Không gian ẩm thực tinh tế kết hợp giữa truyền thống và hiện đại, mang đến trải nghiệm ẩm thực đáng nhớ cho thực khách.</p>
+        <div class="social-links">
+          <a href="https://www.facebook.com/Hoadangshu" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/nggdanggkhoaa/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.youtube.com/@khoaang5410" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+          <a href="www.tiktok.com/@ngdangkhoa55" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
+      <div class="footer-column">
+        <h3>Liên kết nhanh</h3>
+        <ul style="list-style: none; padding: 0;">
+          <li><a href="#gioithieu" style="color: #ccc; text-decoration: none; display: block; margin-bottom: 10px;">Giới thiệu</a></li>
+          <li><a href="#menu" style="color: #ccc; text-decoration: none; display: block; margin-bottom: 10px;">Trưng Bày</a></li>
+          <li><a href="#lienhe" style="color: #ccc; text-decoration: none; display: block; margin-bottom: 10px;">Liên hệ</a></li>
+          <li><a href="#bookingModal" id="footerBookingBtn" style="color: #ccc; text-decoration: none; display: block; margin-bottom: 10px;">Đặt bàn</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Đăng ký nhận tin</h3>
+        <p>Nhận thông tin khuyến mãi và sự kiện đặc biệt từ Hoa Đăng.</p>
+        <form id="footerSubscribeForm">
+          <div class="form-group" style="margin-bottom: 10px;">
+            <input type="text" id="footerName" placeholder="Họ và tên" required 
+                   style="width: 100%; padding: 10px; border: none; border-radius: 4px; margin-bottom: 10px;">
+          </div>
+          <div class="form-group" style="margin-bottom: 10px;">
+            <input type="email" id="footerEmail" placeholder="Email của bạn" required 
+                   style="width: 100%; padding: 10px; border: none; border-radius: 4px; margin-bottom: 10px;">
+          </div>
+          <button type="submit" style="background: #c19a6b; color: white; border: none; padding: 10px 15px; border-radius: 4px; cursor: pointer; width: 100%;">Đăng ký</button>
+        </form>
+        <div id="footerSubscribeSuccess" style="display: none; color: #4CAF50; margin-top: 10px; padding: 10px; background: #f8fff8; border-radius: 8px; border: 1px solid #e0f7e0;">
+          Đã đăng ký nhận tin thành công!
+        </div>
+      </div>
+    </div>
+    <div class="copyright">
+      &copy; 2025 Trung Tâm Hội Nghị - Tiệc Cưới Hoa Đăng. Thiết kế bởi KhoaHihi.
+    </div>
+  </footer>
+
+  <div id="bookingModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2 style="text-align: center; margin-bottom: 20px;">Đặt bàn</h2>
+      <form id="bookingForm">
+        <div class="form-group">
+          <label for="name">Họ và tên</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Số điện thoại</label>
+          <input type="tel" id="phone" name="phone" required>
+        </div>
+        <div class="form-group">
+          <label for="date">Ngày đặt</label>
+          <input type="date" id="date" name="date" required>
+        </div>
+        <div class="form-group">
+          <label for="time">Giờ đặt</label>
+          <input type="time" id="time" name="time" required>
+        </div>
+        <div class="form-group">
+          <label for="guests">Số lượng người</label>
+          <input type="number" id="guests" name="guests" min="1" required>
+        </div>
+        <div class="form-group">
+          <label for="notes">Ghi chú</label>
+          <textarea id="notes" name="notes" rows="3"></textarea>
+        </div>
+        <button type="submit" class="form-submit">Xác nhận đặt bàn</button>
+      </form>
+      <div id="bookingSuccess" class="success-message">
+        Đã gửi thông tin đặt bàn thành công!
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Lấy các phần tử modal đặt bàn
+    const bookingModal = document.getElementById('bookingModal');
+    const headerBookingBtn = document.getElementById('headerBookingBtn');
+    const navBookingBtn = document.getElementById('navBookingBtn');
+    const footerBookingBtn = document.getElementById('footerBookingBtn');
+    const closeBtns = document.querySelectorAll('.close');
+    
+    // Mở modal đặt bàn khi click các nút đặt bàn
+    function openBookingModal(e) {
+      e.preventDefault();
+      bookingModal.style.display = 'block';
+    }
+    
+    headerBookingBtn.addEventListener('click', openBookingModal);
+    navBookingBtn.addEventListener('click', openBookingModal);
+    footerBookingBtn.addEventListener('click', openBookingModal);
+    
+    // Đóng modal khi click nút đóng
+    closeBtns.forEach(btn => {
+      btn.onclick = function() {
+        bookingModal.style.display = 'none';
+      }
+    });
+    
+    // Đóng modal khi click bên ngoài
+    window.onclick = function(event) {
+      if (event.target == bookingModal) {
+        bookingModal.style.display = 'none';
+      }
+    }
+    
+    // Gửi thông tin đặt bàn đến Telegram
+    document.getElementById('bookingForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const name = document.getElementById('name').value;
+      const phone = document.getElementById('phone').value;
+      const date = document.getElementById('date').value;
+      const time = document.getElementById('time').value;
+      const guests = document.getElementById('guests').value;
+      const notes = document.getElementById('notes').value;
+      
+      const message = `📅 *ĐẶT BÀN MỚI* 📅
+      👤 *Tên:* ${name}
+      📞 *Điện thoại:* ${phone}
+      🗓️ *Ngày:* ${date}
+      ⏰ *Giờ:* ${time}
+      👥 *Số người:* ${guests}
+      📝 *Ghi chú:* ${notes || 'Không có'}`;
+      
+      sendToTelegram(message, 'bookingSuccess');
+    });
+    
+    // Gửi thông tin đăng ký nhận tin đến Telegram
+    document.getElementById('footerSubscribeForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const name = document.getElementById('footerName').value;
+      const email = document.getElementById('footerEmail').value;
+      
+      const message = `📩 *ĐĂNG KÝ NHẬN TIN* 📩
+      👤 *Tên:* ${name}
+      📧 *Email:* ${email}`;
+      
+      sendToTelegram(message, 'footerSubscribeSuccess');
+    });
+    
+    // Hàm gửi thông báo đến Telegram
+    function sendToTelegram(message, successElementId) {
+      const botToken = '7519815502:AAGnroF3X2GpxT08LEaGLfG1HRVVFHPsjtA';
+      const chatId = '5940830830';
+      
+      const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+      
+      fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          chat_id: chatId,
+          text: message,
+          parse_mode: 'Markdown'
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        // Hiển thị thông báo thành công
+        const successElement = document.getElementById(successElementId);
+        successElement.style.display = 'block';
+        
+        // Ẩn form và reset sau 3 giây
+        if (successElementId === 'bookingSuccess') {
+          document.getElementById('bookingForm').style.display = 'none';
+          setTimeout(() => {
+            bookingModal.style.display = 'none';
+            document.getElementById('bookingForm').reset();
+            document.getElementById('bookingForm').style.display = 'block';
+            successElement.style.display = 'none';
+          }, 2000);
+        } else {
+          document.getElementById('footerSubscribeForm').style.display = 'none';
+          setTimeout(() => {
+            document.getElementById('footerSubscribeForm').reset();
+            document.getElementById('footerSubscribeForm').style.display = 'block';
+            successElement.style.display = 'none';
+          }, 3000);
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('Có lỗi xảy ra khi gửi thông tin. Vui lòng thử lại sau.');
+      });
+    }
+
+    // Thêm hiệu ứng scroll cho navigation
+    const nav = document.getElementById('mainNav');
+    const navLinks = document.querySelectorAll('nav a');
+    
+    // Thêm class khi scroll
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        nav.classList.add('nav-scrolled');
+      } else {
+        nav.classList.remove('nav-scrolled');
+      }
+      
+      // Highlight menu item tương ứng với section hiện tại
+      const fromTop = window.scrollY + 100;
+      
+      navLinks.forEach(link => {
+        const targetId = link.getAttribute('href');
+        if (targetId.startsWith('#')) {
+          const section = document.querySelector(targetId);
+          if (section && 
+              section.offsetTop <= fromTop &&
+              section.offsetTop + section.offsetHeight > fromTop) {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+        }
+      });
+    });
+
+    // Smooth scroll khi click menu
+    navLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        const targetId = link.getAttribute('href');
+        if (targetId.startsWith('#') && !targetId.includes('Modal')) {
+          e.preventDefault();
+          const targetSection = document.querySelector(targetId);
+          if (targetSection) {
+            window.scrollTo({
+              top: targetSection.offsetTop - 80,
+              behavior: 'smooth'
+            });
+            
+            // Cập nhật active state
+            navLinks.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>
