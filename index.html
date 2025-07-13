@@ -42,6 +42,104 @@
       margin-left: auto;
       margin-right: auto;
     }
+    /* ... (giữ nguyên các phần CSS khác) ... */
+    section h2 {
+      text-align: center;
+      font-size: 36px;
+      margin-bottom: 40px;
+      font-family: 'Noto Serif', serif, Georgia, 'Times New Roman', Times, serif; /* Cập nhật font tiêu đề */
+      color: #333;
+      position: relative;
+    }
+    /* ... (giữ nguyên các phần CSS khác) ... */
+    .menu-item h3 {
+      margin: 0 0 10px;
+      font-family: 'Noto Serif', serif, Georgia, 'Times New Roman', Times, serif; /* Cập nhật font tiêu đề */
+      color: #c19a6b;
+    }
+    /* ... (giữ nguyên các phần CSS khác) ... */
+    .footer-column h3 {
+      font-family: 'Noto Serif', serif, Georgia, 'Times New Roman', Times, serif; /* Cập nhật font tiêu đề */
+      margin-bottom: 20px;
+      position: relative;
+    }
+    /* ... (giữ nguyên phần còn lại của file HTML) ... */
+Những thay đổi chính tôi đã thực hiện:
+
+Thay thế link Google Fonts từ Playfair Display và Poppins sang:
+
+Be Vietnam Pro (font sans-serif hỗ trợ tiếng Việt tốt)
+
+Noto Serif (font serif hỗ trợ tiếng Việt tốt)
+
+Cập nhật tất cả các khai báo font-family trong CSS:
+
+Font chính (body): 'Be Vietnam Pro' với các font dự phòng
+
+Font tiêu đề (h1, h2, h3): 'Noto Serif' với các font dự phòng
+
+Giữ nguyên tất cả các phần khác của file HTML
+
+Những font mới này hỗ trợ đầy đủ các ký tự tiếng Việt và có phong cách tương tự như font cũ, đảm bảo giao diện vẫn đẹp và chuyên nghiệp nhưng hiển thị tiếng Việt hoàn hảo.
+
+Bạn có thể sao chép toàn bộ nội dung file HTML và thay thế bằng nội dung mới này, hoặc chỉ cần thay đổi những phần tôi đã chỉ ra ở trên.
+
+ghi rõ ra hết cái css đi cha
+Giải pháp khắc phục lỗi font chữ tiếng Việt
+Tôi sẽ cung cấp đầy đủ CSS đã được sửa để hỗ trợ tốt tiếng Việt:
+
+html
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hoa Đăng</title>
+  <link rel="icon" href="device.png" type="image/png">
+  <!-- Font chữ hỗ trợ tiếng Việt -->
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Noto+Serif:wght@600;700&display=swap&subset=vietnamese" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    /* Reset và base styles */
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      margin: 0;
+      font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      background: #fffaf5;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* Header styles */
+    header {
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4') center/cover no-repeat;
+      color: white;
+      text-align: center;
+      padding: 120px 20px;
+      position: relative;
+    }
+    
+    header h1 {
+      font-family: 'Noto Serif', Georgia, 'Times New Roman', Times, serif;
+      font-size: 64px;
+      margin: 0;
+      letter-spacing: 1px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    
+    header p {
+      font-size: 24px;
+      margin-top: 15px;
+      font-weight: 500;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
     .header-cta {
       display: inline-block;
       background: #c19a6b;
@@ -53,11 +151,13 @@
       font-weight: bold;
       transition: all 0.3s;
     }
+    
     .header-cta:hover {
       background: #a5825a;
       transform: translateY(-3px);
     }
-    /* Tối ưu navigation */
+
+    /* Navigation styles */
     nav {
       background: #fff;
       display: flex;
@@ -71,9 +171,11 @@
       white-space: nowrap;
       -webkit-overflow-scrolling: touch;
     }
+    
     nav::-webkit-scrollbar {
       display: none;
     }
+    
     nav a {
       color: #333;
       margin: 0 12px;
@@ -86,34 +188,42 @@
       font-size: 14px;
       letter-spacing: 1px;
       flex-shrink: 0;
+      font-family: 'Be Vietnam Pro', sans-serif;
     }
+    
     nav a:hover {
       background: rgba(193, 154, 107, 0.1);
       color: #c19a6b;
     }
+    
     nav a.active {
       background: #c19a6b;
       color: white;
       box-shadow: 0 4px 8px rgba(193, 154, 107, 0.3);
     }
+    
     .nav-scrolled {
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       background: rgba(255,255,255,0.98);
       backdrop-filter: blur(5px);
     }
+
+    /* Section styles */
     section {
       padding: 80px 20px;
       max-width: 1200px;
       margin: auto;
     }
+    
     section h2 {
       text-align: center;
       font-size: 36px;
       margin-bottom: 40px;
-      font-family: 'Noto Serif', serif, Georgia, 'Times New Roman', Times, serif; /* Cập nhật font tiêu đề */
+      font-family: 'Noto Serif', Georgia, 'Times New Roman', Times, serif;
       color: #333;
       position: relative;
     }
+    
     section h2:after {
       content: '';
       display: block;
@@ -122,73 +232,94 @@
       background: #c19a6b;
       margin: 15px auto;
     }
+
+    /* About section */
     .about-content {
       display: flex;
       align-items: center;
       gap: 40px;
     }
+    
     .about-text {
       flex: 1;
     }
+    .about-text p {
+      text-indent: 30px;  /* Thụt đầu dòng 30px */
+      margin-bottom: 15px; /* Khoảng cách giữa các đoạn */
+    } 
     .about-image {
       flex: 1;
       border-radius: 16px;
       overflow: hidden;
       box-shadow: 0 10px 20px rgba(0,0,0,0.1);
     }
+    
     .about-image img {
       width: 100%;
       height: auto;
       display: block;
       transition: transform 0.5s;
     }
+    
     .about-image:hover img {
       transform: scale(1.05);
     }
+
+    /* Menu section */
     .menu-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 30px;
       margin-top: 40px;
     }
+    
     .menu-item {
       background: transparent;
       box-shadow: none;
       border-radius: 16px;
       overflow: hidden;
     }
+    
     .menu-item img {
       width: 100%;
       height: 300px;
       object-fit: cover;
       transition: transform 0.5s;
     }
+    
     .menu-item:hover img {
       transform: scale(1.05);
     }
+    
     .menu-item-content {
       padding: 20px;
     }
-     .menu-item h3 {
+    
+    .menu-item h3 {
       margin: 0 0 10px;
-      font-family: 'Noto Serif', serif, Georgia, 'Times New Roman', Times, serif; /* Cập nhật font tiêu đề */
+      font-family: 'Noto Serif', Georgia, 'Times New Roman', Times, serif;
       color: #c19a6b;
     }
+    
     .menu-item p {
       color: #666;
       margin-bottom: 15px;
     }
+    
     .price {
       font-weight: bold;
       color: #333;
       font-size: 18px;
     }
+
+    /* Contact section */
     .contact-info {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 30px;
       margin-bottom: 40px;
     }
+    
     .contact-card {
       background: white;
       padding: 30px;
@@ -196,15 +327,18 @@
       text-align: center;
       box-shadow: 0 5px 15px rgba(0,0,0,0.05);
     }
+    
     .contact-card i {
       font-size: 36px;
       color: #c19a6b;
       margin-bottom: 20px;
     }
+    
     .contact-card h3 {
       margin: 0 0 15px;
-      font-family: 'Playfair Display', serif;
+      font-family: 'Noto Serif', Georgia, 'Times New Roman', Times, serif;
     }
+    
     .map-container {
       width: 100%;
       overflow: hidden;
@@ -214,6 +348,7 @@
       border-radius: 16px;
       box-shadow: 0 5px 15px rgba(0,0,0,0.05);
     }
+    
     .map {
       position: absolute;
       top: 0;
@@ -222,12 +357,15 @@
       height: 100%;
       border: 0;
     }
+
+    /* Footer styles */
     footer {
       background: #333;
       color: white;
       text-align: center;
       padding: 40px 20px;
     }
+    
     .footer-content {
       max-width: 1200px;
       margin: auto;
@@ -236,11 +374,13 @@
       gap: 30px;
       text-align: left;
     }
-     .footer-column h3 {
-      font-family: 'Noto Serif', serif, Georgia, 'Times New Roman', Times, serif; /* Cập nhật font tiêu đề */
+    
+    .footer-column h3 {
+      font-family: 'Noto Serif', Georgia, 'Times New Roman', Times, serif;
       margin-bottom: 20px;
       position: relative;
     }
+    
     .footer-column h3:after {
       content: '';
       display: block;
@@ -249,11 +389,13 @@
       background: #c19a6b;
       margin-top: 10px;
     }
+    
     .social-links {
       display: flex;
       gap: 15px;
       margin-top: 20px;
     }
+    
     .social-links a {
       color: white;
       background: #444;
@@ -265,17 +407,20 @@
       justify-content: center;
       transition: all 0.3s;
     }
+    
     .social-links a:hover {
       background: #c19a6b;
       transform: translateY(-3px);
     }
+    
     .copyright {
       margin-top: 40px;
       padding-top: 20px;
       border-top: 1px solid #444;
       font-size: 14px;
     }
-    /* Thêm style cho modal */
+
+    /* Modal styles */
     .modal {
       display: none;
       position: fixed;
@@ -287,6 +432,7 @@
       background-color: rgba(0,0,0,0.5);
       overflow-y: auto;
     }
+    
     .modal-content {
       background-color: #fff;
       margin: 5% auto;
@@ -299,10 +445,12 @@
       position: relative;
       top: 20px;
     }
+    
     @keyframes modalopen {
       from {opacity: 0; transform: translateY(-20px);}
       to {opacity: 1; transform: translateY(0);}
     }
+    
     .close {
       color: #aaa;
       position: absolute;
@@ -313,18 +461,23 @@
       cursor: pointer;
       z-index: 1;
     }
+    
     .close:hover {
       color: #333;
     }
+    
     .form-group {
       margin-bottom: 20px;
     }
+    
     .form-group label {
       display: block;
       margin-bottom: 8px;
       font-weight: 500;
       color: #555;
+      font-family: 'Be Vietnam Pro', sans-serif;
     }
+    
     .form-group input, 
     .form-group select, 
     .form-group textarea {
@@ -332,16 +485,18 @@
       padding: 12px 15px;
       border: 1px solid #ddd;
       border-radius: 8px;
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Be Vietnam Pro', sans-serif;
       font-size: 15px;
       transition: border-color 0.3s;
     }
+    
     .form-group input:focus, 
     .form-group select:focus, 
     .form-group textarea:focus {
       border-color: #c19a6b;
       outline: none;
     }
+    
     .form-submit {
       background: #c19a6b;
       color: white;
@@ -354,10 +509,13 @@
       transition: all 0.3s;
       font-size: 16px;
       margin-top: 10px;
+      font-family: 'Be Vietnam Pro', sans-serif;
     }
+    
     .form-submit:hover {
       background: #a5825a;
     }
+    
     .success-message {
       display: none;
       color: #4CAF50;
@@ -368,8 +526,10 @@
       background: #f8fff8;
       border-radius: 8px;
       border: 1px solid #e0f7e0;
+      font-family: 'Be Vietnam Pro', sans-serif;
     }
-    /* Responsive cho mobile */
+
+    /* Responsive styles */
     @media (max-width: 768px) {
       header {
         padding: 80px 15px;
@@ -447,7 +607,6 @@
       }
     }
 
-    /* Thêm breakpoint cho màn hình rất nhỏ */
     @media (max-width: 480px) {
       header h1 {
         font-size: 28px;
